@@ -3,33 +3,21 @@
 
 <head>
   <meta charset="utf-8">
-  <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/light.css">
   <style>
     body {
-      margin: 0;
-      padding: 0;
-
       width: 300px;
       height: 150px;
-
-      border-radius: 1rem;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
+      text-align: center;      
     }
   </style>
 </head>
 
-<body class="bg-red-200">
-  <div class="flex flex-col justify-center text-center">
+<body>
     <h1>Export Facebook Comments</h1>
 
-    <button class="py-4 px-4 my-1 rounded-md hover:shadow-md text-white bg-red-700 hover:bg-red-800" type="button"
-      id="launch">1. Launch in mobile Facebook</button>
-    <button class="py-4 px-4 my-1 rounded-md hover:shadow-md text-white bg-red-600 hover:bg-red-800" type="button"
-      id="expand">2. Download</button>
-  </div>
+    <button type="button" id="launch">1. Launch in Mobile</button>
+    <button type="button" id="expand">2. Fetch & Download</button>
 
   <script src="scripts/popup.js"></script>
 </body>
