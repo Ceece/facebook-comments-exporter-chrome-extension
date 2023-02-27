@@ -4,7 +4,7 @@ const delay = (ms) => new Promise(resolve => setTimeout(() => resolve(), ms))
 const stripTag = (str = '') => (str + '').replace(/<\/?[^>]+(>|$)/g, '')
 
 function launch () {
-  window.open(window.location.href.replace('www.facebook.com', 'm.facebook.com'), '_blank')
+  window.location.href = window.location.href.replace('www.facebook.com', 'm.facebook.com')
 }
 
 async function expand () {
@@ -37,7 +37,7 @@ function getComments () {
   const elements = getCommentElements()
   const comments = []
   const postedIn = window.location.href
-  for (let i = 0; i < elements.length; i++) {
+  for (const i of elements) {
     try {
       const element = elements[i]
       const name = element.parentElement.children[0].innerText
@@ -60,14 +60,14 @@ function download (content, fileName) {
   a.click()
 }
 
-chrome.extension.onMessage.addListener(async function (message, sender, sendResponse) {
+console.log('===== chrome.runtime:', chrome.runtime)
+chrome.runtime.onMessage.addListener(async function (message, sender, sendResponse) {
   switch (message.type) {
     case 'launch':
       launch()
       break
     case 'expand':
-      await expand()
-      extract()
+      expand().then(() => extract())
       break
   }
 })

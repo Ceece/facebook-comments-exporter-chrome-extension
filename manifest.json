@@ -1,0 +1,41 @@
+{
+  "name": "Extract Facebook Comments",
+  "version": "1.0.0",
+  "manifest_version": 3,
+  "description": "Extract Facebook comments to CSV",
+  "icons": {
+    "16": "icons/icon-16.png",
+    "128": "icons/icon-128.png"
+  },
+  "background": {
+    "service_worker": "scripts/background.js"
+  },
+  "permissions": [
+    "tabs",
+    "storage",
+    "debugger"
+  ],
+  "host_permissions": [
+    "http://www.facebook.com/"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "http://*/*",
+        "https://*/*"
+      ],
+      "all_frames": true,
+      "js": [
+        "./scripts/contentscript.js"
+      ]
+    }
+  ],
+  "action": {
+    "default_icon": {
+      "19": "icons/icon-16.png",
+      "38": "icons/icon-32.png"
+    },
+    "default_title": "Type A Chrome Extension Boilerplate",
+    "default_popup": "popup.html"
+  }
+}
